@@ -1,0 +1,25 @@
+{%load crispy_forms_tags%}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6" style="padding-top:8%">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <h3 class="text-primary">Sign Up</h3>
+                    <hr>
+                    <form method="post">
+                        {%csrf_token%}
+                        {{form|crispy}}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                    <div>
+                    <h3 class="text-center">Already registered?<a href="{% url 'songs:login' %}">Login</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

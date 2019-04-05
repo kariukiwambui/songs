@@ -1,0 +1,30 @@
+{% extends 'songs/base.html' %}
+{%load crispy_forms_tags%}
+{% block title %} New song{%endblock%}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <h3 class="text-primary text-capitalize">new song</h3>
+                    <hr>
+                    <form method="post" enctype="multipart/form-data">
+                        {%if message%}
+                        <div class="alert alert-primary">
+                            <h4 class="text-danger">{{message}}</h4>
+                        </div>
+                        {%endif%}
+                        {%csrf_token%}
+                        {{form|crispy}}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

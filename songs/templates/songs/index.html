@@ -1,0 +1,29 @@
+{% extends 'songs/base.html' %}
+{%block title%}Songs{%endblock%}
+
+{%block content%}
+<div class="container-fluid">
+    <div class="row">
+        {%if albums %}
+         {%for album in albums %}
+          <div class="col-sm-3">
+              <div class="thumbnail" style="background-color:silver;">
+                  <a href="{%url 'songs:detail' album.id%}">
+                  <img src="{{album.album_cover.url}}" class="img img-responsive" alt="" style="height:200px;width:80%;">
+                  </a>
+                  <div class="caption">
+                      <h4>{{album.album_name}}</h4>
+                      <h5>{{album.artist_name}}</h5>
+                      <a href="{% url 'songs:update-album' album.id %}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                       <a href="{% url 'songs:album-delete' album.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                  </div>
+              </div>
+          </div>
+
+        {%endfor%}
+        {%endif%}
+    </div>
+
+
+</div>
+{%endblock%}

@@ -1,0 +1,61 @@
+{% extends 'songs/base.html' %}
+{%block title%}Songs{%endblock%}
+
+{%block content%}
+
+<!--Album Information -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img src="{{album.album_cover.url}}" class="img img-responsive" alt="" style="height:200px;width:80%">
+                <div class="caption">
+                    <h5>{{album.album_name}}</h5>
+                    <h5>{{album.album_genre}}</h5>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!--Song information -->
+        <div class="col-sm-9">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="">Songs</a></li>
+            <li><a href="{% url 'songs:create-song' album.id %}">Add song</a></li>
+        </ul>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                      <h3 class="text-info">Songs</h3>
+                      <h4 class="text-danger text-center">{{message}}</h4>
+                       <hr>
+                     <table class="table table-success">
+                         <thead>
+                          <th>Song name</th>
+                          <th>Audio</th>
+                          <th>Favourite</th>
+                          <th>Action</th>
+                         </thead>
+                         <tbody>
+                         {% if album.song_set %}
+                          {%for song in album.song_set.all%}
+                         <tr>
+                             <td>{{ song.song_name}}</td>
+                             <td><a href="{{song.song_audio.url}}"
+                             class="btn btn-info btn-sm" target="_blank"><i class="fas fa-play"></i></a></td>
+                             <td><a href="" class="btn btn-danger btn-sm"><i class="fas fa-star"></i></a></td>
+                             <td><a href="{% url 'songs:song-update' song.id%}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                             <a href="{% url 'songs:song-delete' album.id song.id%}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td>
+                         </tr>
+                         {%endfor%}
+                         {%endif%}
+                         </tbody>
+                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{%endblock%}
