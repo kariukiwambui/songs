@@ -8,7 +8,7 @@
         <div class="col-sm-4">
             <div class="panel panel-info">
                 <div class="panel-body">
-                    <h3 class="text-primary text-capitalize">new song</h3>
+                    <h3 class="text-primary text-capitalize">{%if object%}Update Song{%else%}New song{%endif%}</h3>
                     <hr>
                     <form method="post" enctype="multipart/form-data">
                         {%if message%}

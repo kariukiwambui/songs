@@ -11,25 +11,25 @@
              {%endif%}
             <div class="panel panel-info">
                 <div class="panel-body">
-                    <h3 class="text-primary">Login</h3>
+                    <h3 class="text-primary">Login into your account</h3>
                     <hr>
                     <form method="post" class="form-horizontal" style="padding:10px,10px,10px,10px">
 
 
                         {%csrf_token%}
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="text" class="form-control" placeholder="Username" name="username">
                         </div>
                          <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success">Login</button>
+                            <button type="submit" class="btn btn-info">Login</button>
                         </div>
                     </form>
                      <div>
-                    <h3 class="text">Not registered?<a href="{% url 'songs:signup' %}">Sign Up</a></h3>
+                    <h5 class="text">Not registered?<a href="{% url 'songs:signup' %}">Sign Up</a></h5>
                     </div>
                 </div>
             </div>
